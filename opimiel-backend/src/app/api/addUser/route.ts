@@ -13,7 +13,7 @@ export async function POST(req:NextRequest) {
     password = body.password;
     name = body.name;
     }catch(e){
-        return NextResponse.json({pe:"o",statusbar:403})
+        return NextResponse.json({pe:"o"},{status:403})
     }   
 
     if (typeof email == "string" && typeof password == "string" && typeof name == "string"){
@@ -24,7 +24,7 @@ export async function POST(req:NextRequest) {
             password: password
         }
     })
-    return NextResponse.json({oe:"oe",statusbar:200})
+    return NextResponse.json({oe:"oe"},{status: 200})
 }
-    else return NextResponse.json({oe:"nan",statusbar: 378})
+    else return NextResponse.json({oe:"nan"},{status:378})
 }
