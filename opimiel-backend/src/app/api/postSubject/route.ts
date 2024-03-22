@@ -2,7 +2,17 @@ import Prisma from "@/utils/PrismaClient";
 import { NextRequest, NextResponse } from "next/server";
 
 export async function POST(request: NextRequest) {
-  const { authorId, name } = await request.json();
+
+    let authorId;
+    let name
+    try {
+        const body = await request.json();
+        authorId = body.authorId;
+        name = body.name
+    }
+    catch(e){
+        return NextResponse.json({message:"pas Json",statusbar: 403})
+    }
 
   if (typeof authorId == "string" && typeof name == "string") {
     const user = await Prisma.user.findUnique({
