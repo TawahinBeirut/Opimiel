@@ -5,7 +5,7 @@ export async function POST(request: NextRequest) {
   let authorId;
   let name;
   try {
-    const body = await request.json();
+    const body = await request.json();    
     authorId = body.authorId;
     name = body.name;
   } catch (e) {
