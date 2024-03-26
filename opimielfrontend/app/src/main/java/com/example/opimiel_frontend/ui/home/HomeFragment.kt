@@ -7,6 +7,10 @@ import android.view.ViewGroup
 import android.widget.TextView
 import androidx.fragment.app.Fragment
 import androidx.lifecycle.ViewModelProvider
+import androidx.recyclerview.widget.LinearLayoutManager
+import androidx.recyclerview.widget.RecyclerView
+import com.example.opimiel_frontend.HomeAdapter
+import com.example.opimiel_frontend.R
 import com.example.opimiel_frontend.databinding.FragmentHomeBinding
 
 class HomeFragment : Fragment() {
@@ -22,6 +26,7 @@ class HomeFragment : Fragment() {
         container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View {
+
         val homeViewModel =
             ViewModelProvider(this).get(HomeViewModel::class.java)
 
@@ -31,6 +36,12 @@ class HomeFragment : Fragment() {
         val textView: TextView = binding.textViewHome
         homeViewModel.text.observe(viewLifecycleOwner) {
             textView.text = it
+        }
+
+        // Configuration du Home Adaptater
+        with(binding.recyclerView) {
+            layoutManager = LinearLayoutManager(context)
+            adapter = HomeAdapter()
         }
         return root
     }
