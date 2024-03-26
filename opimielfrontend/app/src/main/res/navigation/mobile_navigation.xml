@@ -14,12 +14,12 @@
     <fragment
         android:id="@+id/navigation_favorites"
         android:name="com.example.opimiel_frontend.ui.favorites.FavoritesFragment"
-        android:label="@string/title_dashboard"
+        android:label="Favorites"
         tools:layout="@layout/fragment_favorites" />
 
     <fragment
         android:id="@+id/navigation_profile"
         android:name="com.example.opimiel_frontend.ui.profile.ProfileFragment"
-        android:label="@string/title_notifications"
+        android:label="Profile"
         tools:layout="@layout/fragment_profile" />
 </navigation>
