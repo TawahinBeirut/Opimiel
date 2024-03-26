@@ -7,7 +7,7 @@
     android:id="@+id/profile_fragment">
 
     <TextView
-        android:id="@+id/textViewFavorites"
+        android:id="@+id/textViewProfile"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="Profile"

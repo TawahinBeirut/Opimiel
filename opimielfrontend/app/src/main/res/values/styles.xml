@@ -1,6 +1,0 @@
-<resources>
-    <style name="VoteButtonStyle" parent="Widget.MaterialComponents.Button.OutlinedButton">
-        <item name="android:textColor">@color/white</item>
-        <item name="android:backgroundTint">@color/purple_500</item>
-    </style>
-</resources>

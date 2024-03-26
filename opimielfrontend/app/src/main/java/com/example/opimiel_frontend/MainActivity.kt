@@ -1,26 +1,35 @@
 package com.example.opimiel_frontend
 
-import android.content.Intent
-import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
-import android.widget.Button
+import com.google.android.material.bottomnavigation.BottomNavigationView
+import androidx.appcompat.app.AppCompatActivity
+import androidx.navigation.findNavController
+import androidx.navigation.ui.AppBarConfiguration
+import androidx.navigation.ui.setupActionBarWithNavController
+import androidx.navigation.ui.setupWithNavController
+import com.example.opimiel_frontend.databinding.ActivityMainBinding
 
 class MainActivity : AppCompatActivity() {
 
-    lateinit var buttonStart: Button;
+    private lateinit var binding: ActivityMainBinding
+
     override fun onCreate(savedInstanceState: Bundle?) {
-
-        // Fais la connexion
         super.onCreate(savedInstanceState)
-        setContentView(R.layout.activity_main);
-        buttonStart = findViewById<Button>(R.id.button);
-        buttonStart.setOnClickListener{
-            var intent: Intent = Intent(this,Home::class.java);
 
-            // Vrai Id d'utilisateur
-            intent.putExtra("UserId","2fa461f7-3344-4566-8371-e89d281885b2");
-            startActivity(intent);
-        }
+        binding = ActivityMainBinding.inflate(layoutInflater)
+        setContentView(binding.root)
+
+        val navView: BottomNavigationView = binding.navView
+
+        val navController = findNavController(R.id.nav_host_fragment_activity_main)
+        // Passing each menu ID as a set of Ids because each
+        // menu should be considered as top level destinations.
+        val appBarConfiguration = AppBarConfiguration(
+            setOf(
+                R.id.navigation_home, R.id.navigation_favorites, R.id.navigation_profile
+            )
+        )
+        setupActionBarWithNavController(navController, appBarConfiguration)
+        navView.setupWithNavController(navController)
     }
-
 }
