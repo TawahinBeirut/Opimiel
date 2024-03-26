@@ -7,15 +7,15 @@ import android.widget.Button
 
 class MainActivity : AppCompatActivity() {
 
-    var buttonStart = findViewById<Button>(R.id.button);
+    lateinit var buttonStart: Button;
     override fun onCreate(savedInstanceState: Bundle?) {
 
         // Fais la connexion
         super.onCreate(savedInstanceState)
-        setContentView(R.layout.activity_main)
-
+        setContentView(R.layout.activity_main);
+        buttonStart = findViewById<Button>(R.id.button);
         buttonStart.setOnClickListener{
-            var intent: Intent = Intent(this,MainActivity::class.java);
+            var intent: Intent = Intent(this,Home::class.java);
 
             // Vrai Id d'utilisateur
             intent.putExtra("UserId","2fa461f7-3344-4566-8371-e89d281885b2");

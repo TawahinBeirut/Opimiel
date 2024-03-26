@@ -7,6 +7,9 @@ android {
     namespace = "com.example.opimiel_frontend"
     compileSdk = 34
 
+    buildFeatures {
+        viewBinding = true
+    }
     defaultConfig {
         applicationId = "com.example.opimiel_frontend"
         minSdk = 26
