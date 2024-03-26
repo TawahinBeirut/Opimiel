@@ -8,19 +8,7 @@ import androidx.recyclerview.widget.RecyclerView
 
 class HomeAdapter(): RecyclerView.Adapter<HomeAdapter.ViewHolder>(){
 
-    private var subjectList: MutableList<Subject> = mutableListOf(
-        Subject("oe","nan","oe"),
-        Subject("oe","nan","oe"),
-        Subject("oe","nan","oe"),
-        Subject("oe","nan","oe"),
-        Subject("oe","nan","oe"),
-        Subject("oe","nan","oe"),
-        Subject("oe","nan","oe"),
-        Subject("oe","nan","oe"),
-        Subject("oe","nan","oe"),
-        Subject("oe","nan","oe"));
-
-
+    private var subjectList: MutableList<Subject> = mutableListOf();
     class ViewHolder(view: View) : RecyclerView.ViewHolder(view) {
         val textView: TextView
 
@@ -44,5 +32,10 @@ class HomeAdapter(): RecyclerView.Adapter<HomeAdapter.ViewHolder>(){
         val currentObject = subjectList[position];
         holder.textView.text = currentObject.name;
         // completer les champs de la view donner
+    }
+    fun updateSubjects(newSubjects: List<Subject>) {
+        subjectList.clear()
+        subjectList.addAll(newSubjects)
+        notifyDataSetChanged()
     }
 }
