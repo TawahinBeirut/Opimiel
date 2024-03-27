@@ -25,6 +25,7 @@
         <activity android:name=".MainActivity"></activity>
 
         <activity android:name=".SubjectPage"></activity>
+        <activity android:name=".AddSubjectPage"></activity>
     </application>
 
     <uses-permission android:name="android.permission.INTERNET" />

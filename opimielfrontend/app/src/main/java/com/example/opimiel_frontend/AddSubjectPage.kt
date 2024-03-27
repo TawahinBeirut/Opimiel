@@ -1,0 +1,13 @@
+package com.example.opimiel_frontend
+
+import android.os.Bundle
+import androidx.appcompat.app.AppCompatActivity
+
+class AddSubjectPage: AppCompatActivity() {
+
+    override fun onCreate(savedInstanceState: Bundle?) {
+        super.onCreate(savedInstanceState);
+
+        setContentView(R.layout.add_subject);
+    }
+}
