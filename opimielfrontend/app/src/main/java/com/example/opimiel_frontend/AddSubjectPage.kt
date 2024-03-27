@@ -10,6 +10,9 @@ import android.widget.Button
 import android.widget.EditText
 import androidx.appcompat.app.AppCompatActivity
 import com.example.opimiel_frontend.model.apiCalls.MessageResponse
+import com.google.android.material.snackbar.Snackbar
+import okhttp3.OkHttpClient
+import okhttp3.logging.HttpLoggingInterceptor
 import retrofit2.Call
 import retrofit2.Callback
 import retrofit2.Response
@@ -20,10 +23,15 @@ class AddSubjectPage: AppCompatActivity() {
     private lateinit var userId:String;
     private lateinit var input: EditText;
     private lateinit var buttonConfirm: Button;
+    val logging = HttpLoggingInterceptor().apply { level = HttpLoggingInterceptor.Level.BODY }
+    val client = OkHttpClient.Builder()
+        .addInterceptor(logging)
+        .build()
 
     val retrofit = Retrofit.Builder()
         .baseUrl("https://opimiel.vercel.app/api/")
         .addConverterFactory(GsonConverterFactory.create())
+        .client(client)
         .build()
 
     val apiService = retrofit.create(ApiService::class.java);
@@ -51,7 +59,11 @@ class AddSubjectPage: AppCompatActivity() {
                         response: Response<MessageResponse>
                     ) {
                         if (response.isSuccessful){
-
+                            Snackbar.make(it.rootView, "Requête réussie", Snackbar.LENGTH_LONG).show()
+                            var intent: Intent = Intent(it.context,MainActivity::class.java);
+                            // Vrai Id d'utilisateur
+                            intent.putExtra("UserId",userId);
+                            startActivity(intent);
                             Log.d("reussite requete",response.toString())
 
                         }else{

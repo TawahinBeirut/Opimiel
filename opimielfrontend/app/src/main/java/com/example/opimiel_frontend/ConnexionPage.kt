@@ -17,7 +17,7 @@ class ConnexionPage : AppCompatActivity()  {
             var intent: Intent = Intent(this,MainActivity::class.java);
 
             // Vrai Id d'utilisateur
-            intent.putExtra("UserId","2fa461f7-3344-4566-8371-e89d281885b2");
+            intent.putExtra("UserId","b898a640-2b5f-4565-b58d-06899d774c66");
             startActivity(intent);
         }
     }
