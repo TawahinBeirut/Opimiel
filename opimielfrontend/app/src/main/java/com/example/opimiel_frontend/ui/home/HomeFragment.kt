@@ -1,9 +1,8 @@
 package com.example.opimiel_frontend.ui.home
 
-import AllSubjectsApi
+import ApiService
 import OnSubjectClickListener
 import SubjectsResponse
-import android.content.Intent
 import android.os.Bundle
 import android.util.Log
 import android.view.LayoutInflater
@@ -13,12 +12,8 @@ import android.widget.TextView
 import androidx.fragment.app.Fragment
 import androidx.lifecycle.ViewModelProvider
 import androidx.recyclerview.widget.LinearLayoutManager
-import androidx.recyclerview.widget.RecyclerView
 import com.example.opimiel_frontend.HomeAdapter
-import com.example.opimiel_frontend.MainActivity
-import com.example.opimiel_frontend.R
 import com.example.opimiel_frontend.Subject
-import com.example.opimiel_frontend.SubjectPage
 import com.example.opimiel_frontend.databinding.FragmentHomeBinding
 import retrofit2.Call
 import retrofit2.Callback
@@ -39,7 +34,7 @@ class HomeFragment : Fragment(),OnSubjectClickListener {
         .baseUrl("https://opimiel.vercel.app/api/")
         .addConverterFactory(GsonConverterFactory.create())
         .build()
-    val apiService = retrofit.create(AllSubjectsApi::class.java)
+    val apiService = retrofit.create(ApiService::class.java)
 
     override fun onCreateView(
         inflater: LayoutInflater,

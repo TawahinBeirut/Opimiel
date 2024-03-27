@@ -11,8 +11,9 @@ import androidx.navigation.ui.AppBarConfiguration
 import androidx.navigation.ui.setupActionBarWithNavController
 import androidx.navigation.ui.setupWithNavController
 import com.example.opimiel_frontend.databinding.ActivityMainBinding
+import com.example.opimiel_frontend.model.listeners.ChangePageListener
 
-class MainActivity : AppCompatActivity(),OnSubjectClickListener {
+class MainActivity : AppCompatActivity(),OnSubjectClickListener,ChangePageListener {
 
     private lateinit var id:String
     private lateinit var binding: ActivityMainBinding
@@ -48,5 +49,14 @@ class MainActivity : AppCompatActivity(),OnSubjectClickListener {
         }
 
         startActivity(intent)
+    }
+
+
+    override fun changePageToAddSubject() {
+        val intent: Intent = Intent(this, AddSubjectPage::class.java).apply {
+            // Ici on mets toutes les infos importantes
+            putExtra("userId", id);
+        }
+        startActivity(intent);
     }
 }
