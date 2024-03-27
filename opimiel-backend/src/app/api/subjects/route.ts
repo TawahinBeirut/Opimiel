@@ -2,7 +2,7 @@ import { NextRequest, NextResponse } from "next/server";
 import Prisma from "@/utils/PrismaClient";
 
 export async function GET() {
-  let res = await Prisma.subject.findMany();
+  let res = await Prisma.subject.findMany({});
 
   return NextResponse.json({
     message: "Données recuperées",
