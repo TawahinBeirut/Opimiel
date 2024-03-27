@@ -67,9 +67,9 @@ class HomeFragment : Fragment(),OnSubjectClickListener {
                 if (response.isSuccessful) {
                     val body = response.body();
                     val subjectList: MutableList<Subject> = mutableListOf();
+                    subjectList.clear();
                     body?.data?.forEach { subject ->
                         run {
-                            subjectList.clear();
                             subjectList.add(subject);
                         }
                     }

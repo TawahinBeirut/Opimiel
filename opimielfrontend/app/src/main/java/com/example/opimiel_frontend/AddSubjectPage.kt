@@ -1,6 +1,7 @@
 package com.example.opimiel_frontend
 
 import ApiService
+import PostSubjectRequest
 import android.content.Intent
 import android.os.Bundle
 import android.provider.ContactsContract.Profile
@@ -38,20 +39,35 @@ class AddSubjectPage: AppCompatActivity() {
 
         buttonConfirm.setOnClickListener{
 
-            val res = apiService.postSubject(input.text.toString(),userId)
-            if (res.isSuccessful){
-                Log.d("Reussite requete",res.toString());
-                // Mettre une snackbar reussie ici
-                val newIntent:Intent = Intent(it.context,MainActivity::class.java).apply {
-                    putExtra("userId",userId);
+            try {
 
-                }
-                startActivity(newIntent);
-            }
-            else{
-                // Mettre une snackbar ou toast ici echec
-                val resp = res.body();
-                Log.d("Echec requete",resp?.message.toString())
+                val requestBody = PostSubjectRequest(userId, input.text.toString())
+                Log.d("test",requestBody.toString())
+                val call = apiService.postSubject(requestBody);
+
+                call.enqueue(object : Callback<MessageResponse> {
+                    override fun onResponse(
+                        call: Call<MessageResponse>,
+                        response: Response<MessageResponse>
+                    ) {
+                        if (response.isSuccessful){
+
+                            Log.d("reussite requete",response.toString())
+
+                        }else{
+                            Log.d("erreur requete",response.toString())
+                        }
+                    }
+
+                    override fun onFailure(call: Call<MessageResponse>, t: Throwable) {
+                        TODO("Not yet implemented")
+                    }
+
+                })
+
+
+            }catch (e: Exception) {
+                Log.d("Network exception",e.toString())
             }
         }
 
