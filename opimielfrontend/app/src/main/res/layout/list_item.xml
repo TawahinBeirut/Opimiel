@@ -22,22 +22,14 @@
         android:layout_marginBottom="10dp">
 
         <Button
-            android:id="@+id/button_plus_one_true"
+            android:id="@+id/button_subject_switch"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:layout_weight="1"
             style="@style/VoteButtonStyle"
-            android:text="Vrai"
+            android:text="Participer"
             android:layout_marginEnd="2.5dp" />
 
-        <Button
-            android:id="@+id/button_minus_one_true"
-            android:layout_width="0dp"
-            android:layout_height="wrap_content"
-            android:layout_weight="1"
-            style="@style/VoteButtonStyle"
-            android:text="Faux"
-            android:layout_marginStart="2.5dp" />
 
     </LinearLayout>
 

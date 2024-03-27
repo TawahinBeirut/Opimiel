@@ -1,7 +1,9 @@
 package com.example.opimiel_frontend.ui.home
 
 import AllSubjectsApi
+import OnSubjectClickListener
 import SubjectsResponse
+import android.content.Intent
 import android.os.Bundle
 import android.util.Log
 import android.view.LayoutInflater
@@ -13,8 +15,10 @@ import androidx.lifecycle.ViewModelProvider
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import com.example.opimiel_frontend.HomeAdapter
+import com.example.opimiel_frontend.MainActivity
 import com.example.opimiel_frontend.R
 import com.example.opimiel_frontend.Subject
+import com.example.opimiel_frontend.SubjectPage
 import com.example.opimiel_frontend.databinding.FragmentHomeBinding
 import retrofit2.Call
 import retrofit2.Callback
@@ -22,7 +26,7 @@ import retrofit2.Response
 import retrofit2.Retrofit
 import retrofit2.converter.gson.GsonConverterFactory
 
-class HomeFragment : Fragment() {
+class HomeFragment : Fragment(),OnSubjectClickListener {
 
     private var _binding: FragmentHomeBinding? = null
 
@@ -58,7 +62,7 @@ class HomeFragment : Fragment() {
             layoutManager = LinearLayoutManager(context)
             // On met l'api ici
 
-            adapter = HomeAdapter();
+            adapter = HomeAdapter(requireActivity() as OnSubjectClickListener);
             homeAdapter = adapter as HomeAdapter;
         }
 
@@ -95,6 +99,10 @@ class HomeFragment : Fragment() {
     override fun onDestroyView() {
         super.onDestroyView()
         _binding = null
+    }
+
+    override fun onSubjectClick(subject: Subject) {
+        (requireActivity() as? OnSubjectClickListener)?.onSubjectClick(subject)
     }
 
 }
