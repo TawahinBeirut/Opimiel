@@ -1,4 +1,6 @@
-import Prisma from "@/utils/PrismaClient";
+import { PrismaClient } from "@prisma/client";
+
+const Prisma = new PrismaClient();
 import { NextRequest, NextResponse } from "next/server";
 
 
