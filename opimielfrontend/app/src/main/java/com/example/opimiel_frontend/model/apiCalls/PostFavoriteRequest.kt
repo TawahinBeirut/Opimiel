@@ -1,1 +1,1 @@
-data class PostFavoriteRequest(val userId: String, val subjecId: String)
+data class PostFavoriteRequest(val userId: String, val subjectId: String)

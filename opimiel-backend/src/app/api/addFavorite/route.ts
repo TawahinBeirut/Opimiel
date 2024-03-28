@@ -9,7 +9,6 @@ export async function POST(request:NextRequest) {
         const body = await request.json();
         userId = body.userId;
         subjectId = body.subjectId
-        console.error(userId,subjectId)
       } catch (e) {
         return NextResponse.json({ message: "pas Json" }, { status: 403 });
     }
