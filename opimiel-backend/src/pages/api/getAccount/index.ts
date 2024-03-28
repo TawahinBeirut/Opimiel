@@ -20,7 +20,7 @@ export default async function handler(req: NextApiRequest, res: NextApiResponse)
         }
         res.status(200).json({userid: account.id})
     }else{
-        res.status(400).json({error: "THIS ROUTE ONLY ACCEPT POST REQUEST !"})
+        res.status(405).json({error: "THIS ROUTE ONLY ACCEPT POST REQUEST !"})
     }
 
 }
