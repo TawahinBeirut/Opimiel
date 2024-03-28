@@ -34,7 +34,7 @@ interface ApiService{
     fun getOwnSubjects(@Path(value="id",encoded = false) id:String) : Call<SubjectsResponse>
 
     @GET("getResponses/{id})")
-    fun getResponses(@Path(value="id",encoded = false)id:String) : Call<SubjectsResponse>
+    fun getResponses(@Path(value="id",encoded = false)id:String) : Call<PostResResponse>
 
     @Headers("Content-Type: application/json")
     @POST("addFavorite")
@@ -47,4 +47,6 @@ interface ApiService{
     @Headers("Content-Type: application/json")
     @POST("postResponse")
     fun postResponse(@Body requestBody: PostReponseRequest): Call<MessageResponse>
+
+
 }
