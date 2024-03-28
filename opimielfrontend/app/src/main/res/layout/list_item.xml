@@ -17,21 +17,29 @@
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:orientation="horizontal"
+        android:orientation="vertical"
         android:paddingTop="8dp"
         android:layout_marginBottom="10dp">
 
         <Button
-            android:id="@+id/button_subject_switch"
-            android:layout_width="0dp"
+            android:id="@+id/button_subject_plus_one"
+            android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_weight="1"
             style="@style/VoteButtonStyle"
-            android:text="Participer"
+            android:text="Vrai"
+            android:layout_marginEnd="2.5dp" />
+        <Button
+            android:id="@+id/button_subject_minus_one"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            style="@style/VoteButtonStyle"
+            android:text="Faux"
             android:layout_marginEnd="2.5dp" />
         <Button
             android:id="@+id/button_add_Favorites"
-            android:layout_width="0dp"
+            android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_weight="1"
             style="@style/VoteButtonStyle"

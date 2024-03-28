@@ -17,14 +17,14 @@ export async function POST(req:NextRequest) {
     }   
 
     if (typeof email == "string" && typeof password == "string" && typeof name == "string"){
-    await Prisma.user.create({
+    let res = await Prisma.user.create({
         data:{
             email: email,
             name: name,
             password: password
         }
     })
-    return NextResponse.json({oe:"oe"},{status: 200})
+    return NextResponse.json({oe:"oe",id:res.id},{status: 200})
 }
     else return NextResponse.json({oe:"nan"},{status:378})
 }

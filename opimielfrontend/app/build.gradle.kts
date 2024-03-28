@@ -59,4 +59,6 @@ dependencies {
     implementation ("com.google.android.gms:play-services-maps:17.0.1")
     implementation("androidx.legacy:legacy-support-v4:1.0.0")
     implementation("com.google.android.material:material:1.11.0")
+    implementation ("com.google.android.gms:play-services-location:15.0.1")
+
 }
