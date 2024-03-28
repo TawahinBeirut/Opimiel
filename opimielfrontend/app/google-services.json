@@ -1,0 +1,29 @@
+{
+  "project_info": {
+    "project_number": "676588695345",
+    "project_id": "opimiel-frontend",
+    "storage_bucket": "opimiel-frontend.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:676588695345:android:6677faed4b57acc0e94a10",
+        "android_client_info": {
+          "package_name": "com.example.opimiel_frontend"
+        }
+      },
+      "oauth_client": [],
+      "api_key": [
+        {
+          "current_key": "AIzaSyBp5DKno-zBM_Vpk2fkH_yXQtUFSzf2VRo"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": []
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
