@@ -8,6 +8,7 @@ import android.os.Bundle
 import android.util.Log
 import android.widget.TextView
 import androidx.appcompat.app.AppCompatActivity
+import com.example.opimiel_frontend.model.apiCalls.GetCountResponse
 import com.google.android.gms.maps.CameraUpdateFactory
 import com.google.android.gms.maps.GoogleMap
 import com.google.android.gms.maps.OnMapReadyCallback
@@ -22,6 +23,7 @@ import retrofit2.Callback
 import retrofit2.Response
 import retrofit2.Retrofit
 import retrofit2.converter.gson.GsonConverterFactory
+import kotlin.properties.Delegates
 
 class SubjectPage: AppCompatActivity(),OnMapReadyCallback {
 
@@ -29,7 +31,8 @@ class SubjectPage: AppCompatActivity(),OnMapReadyCallback {
     private lateinit var name: String;
     private lateinit var subjectId: String;
     private lateinit var authorId: String;
-
+    private var nbTrue : Int = 0;
+    private var nbFalse :Int = 0;
 
     private lateinit var mMap: GoogleMap;
 
@@ -51,17 +54,39 @@ class SubjectPage: AppCompatActivity(),OnMapReadyCallback {
         setContentView(R.layout.subject_page);
 
 
+        val text :TextView = findViewById(R.id.textViewSubject);
+
         var intent: Intent = intent;
         userId= intent.getStringExtra("userId").toString();
         name = intent.getStringExtra("name").toString();
         subjectId= intent.getStringExtra("subjectId").toString();
         authorId= intent.getStringExtra("authorId").toString();
 
-        
+        apiService.getCount(subjectId).enqueue(object : Callback<GetCountResponse>{
+            override fun onResponse(
+                call: Call<GetCountResponse>,
+                response: Response<GetCountResponse>
+            ) {
+                if (response.isSuccessful) {
+                    var res = response.body();
+                    if (res != null) {
+                        nbTrue = res.nbTrue
+                    };
+                    if (res != null) {
+                        nbFalse = res.nbFalse
+                    }
 
+                    text.text = "nbtrue " + nbTrue + "nbFalse" + nbFalse
+                }
+                else Log.d("ERROR",response.toString())
+            }
 
-        val text :TextView = findViewById(R.id.textViewSubject);
-        text.text = userId +" "+ name +" "+ subjectId +" "+ authorId;
+            override fun onFailure(call: Call<GetCountResponse>, t: Throwable) {
+                TODO("Not yet implemented")
+            }
+
+        })
+
 
         val mapFragment = supportFragmentManager.findFragmentById(R.id.map) as SupportMapFragment
         mapFragment.getMapAsync(this)
