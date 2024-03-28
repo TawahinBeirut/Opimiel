@@ -29,7 +29,14 @@
             style="@style/VoteButtonStyle"
             android:text="Participer"
             android:layout_marginEnd="2.5dp" />
-
+        <Button
+            android:id="@+id/button_add_Favorites"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            style="@style/VoteButtonStyle"
+            android:text="Fav"
+            android:layout_marginEnd="2.5dp" />
 
     </LinearLayout>
 

@@ -23,13 +23,15 @@ class HomeAdapter(private val listener: OnSubjectClickListener): RecyclerView.Ad
     class ViewHolder(view: View,viewType: Int) : RecyclerView.ViewHolder(view) {
         lateinit var textView: TextView
         lateinit var participateButton : Button;
-
+        lateinit var favButton: Button;
 
         init {
             // Define click listener for the ViewHolder's View
             if (viewType == TYPE_ITEM) {
                 textView = view.findViewById(R.id.text_view_item)
                 participateButton = view.findViewById(R.id.button_subject_switch);
+
+                favButton = view.findViewById(R.id.button_add_Favorites)
             }
             else{
                 textView = view.findViewById(R.id.text_empty_view)
@@ -59,6 +61,16 @@ class HomeAdapter(private val listener: OnSubjectClickListener): RecyclerView.Ad
 
             holder.participateButton.setOnClickListener {
                 listener.onSubjectClick(currentSubject)
+            }
+            holder.favButton.setOnClickListener {
+                if (holder.favButton.text == "Fav"){
+                    listener.addFavorite(currentSubject)
+                    holder.favButton.text = "UnFav"
+                }
+                else{
+                    listener.deleteFavorite(currentSubject)
+                    holder.favButton.text = "Fav"
+                }
             }
         }else{
             holder.textView.text = "Pas de sujets dispos"

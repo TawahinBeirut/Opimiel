@@ -2,6 +2,7 @@ import com.example.opimiel_frontend.model.apiCalls.MessageResponse
 import retrofit2.Call
 import retrofit2.Response
 import retrofit2.http.Body
+import retrofit2.http.DELETE
 import retrofit2.http.GET
 import retrofit2.http.Headers
 import retrofit2.http.POST
@@ -21,4 +22,14 @@ interface ApiService{
     @GET("getOwnSubjects/{id}")
     fun getOwnSubjects(@Path(value="id",encoded = false) id:String) : Call<SubjectsResponse>
 
+    @GET("getResponses/{id})")
+    fun getResponses(@Path(value="id",encoded = false)id:String) : Call<SubjectsResponse>
+
+    @Headers("Content-Type: application/json")
+    @POST("addFavorite")
+    fun addFavorite(@Body requestBody: PostFavoriteRequest): Call<MessageResponse>
+
+    @Headers("Content-Type: application/json")
+    @DELETE("deleteFavorite")
+    fun deleteFavorite(@Body requestBody: PostFavoriteRequest): Call<MessageResponse>
 }

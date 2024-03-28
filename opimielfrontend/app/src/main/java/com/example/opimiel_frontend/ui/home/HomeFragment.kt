@@ -103,4 +103,14 @@ class HomeFragment : Fragment(),OnSubjectClickListener {
     override fun getUserId(): String {
         return (requireActivity() as? OnSubjectClickListener)?.getUserId() ?: String();
     }
+
+    override fun getFragmentName(): String {
+        TODO("Not yet implemented")
+    }
+    override fun addFavorite(subject: Subject) {
+
+    }
+    override fun deleteFavorite(subject: Subject) {
+        TODO("Not yet implemented")
+    }
 }

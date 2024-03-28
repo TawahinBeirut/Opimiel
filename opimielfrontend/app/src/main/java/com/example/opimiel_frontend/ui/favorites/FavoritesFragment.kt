@@ -21,7 +21,7 @@ import retrofit2.Response
 import retrofit2.Retrofit
 import retrofit2.converter.gson.GsonConverterFactory
 
-class FavoritesFragment : Fragment() {
+class FavoritesFragment : Fragment(),OnSubjectClickListener {
 
     private var _binding: FragmentFavoritesBinding? = null
     private lateinit var homeAdapter: HomeAdapter;
@@ -90,5 +90,25 @@ class FavoritesFragment : Fragment() {
     override fun onDestroyView() {
         super.onDestroyView()
         _binding = null
+    }
+
+    override fun onSubjectClick(subject: Subject) {
+        TODO("Not yet implemented")
+    }
+
+    override fun getUserId(): String {
+        TODO("Not yet implemented")
+    }
+
+    override fun getFragmentName(): String {
+        return "Favorites"
+    }
+
+    override fun addFavorite(subject: Subject) {
+        TODO("Not yet implemented")
+    }
+
+    override fun deleteFavorite(subject: Subject) {
+        TODO("Not yet implemented")
     }
 }
