@@ -6,4 +6,6 @@ interface OnSubjectClickListener {
     fun getFragmentName(): String;
     fun addFavorite(subject: Subject);
     fun deleteFavorite(subject: Subject);
+    fun getLatUser(): Float;
+    fun getLongUser() : Float;
 }

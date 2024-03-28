@@ -111,4 +111,12 @@ class FavoritesFragment : Fragment(),OnSubjectClickListener {
     override fun deleteFavorite(subject: Subject) {
         TODO("Not yet implemented")
     }
+
+    override fun getLatUser(): Float {
+        TODO("Not yet implemented")
+    }
+
+    override fun getLongUser(): Float {
+        TODO("Not yet implemented")
+    }
 }

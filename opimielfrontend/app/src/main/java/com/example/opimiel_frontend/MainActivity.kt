@@ -138,6 +138,15 @@ class MainActivity : AppCompatActivity(),OnSubjectClickListener,ChangePageListen
         }
     }
 
+    override fun getLatUser(): Float {
+        return this.LatUser;
+    }
+
+    override fun getLongUser(): Float {
+        return this.LongUser;
+    }
+
+
     override fun addFavorite(subject: Subject) {
 
         try {

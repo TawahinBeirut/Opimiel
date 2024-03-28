@@ -32,4 +32,8 @@ interface ApiService{
     @Headers("Content-Type: application/json")
     @DELETE("deleteFavorite")
     fun deleteFavorite(@Body requestBody: PostFavoriteRequest): Call<MessageResponse>
+
+    @Headers("Content-Type: application/json")
+    @POST("postResponse")
+    fun postResponse(@Body requestBody: PostReponseRequest): Call<MessageResponse>
 }

@@ -1,6 +1,7 @@
 package com.example.opimiel_frontend
 
 import OnSubjectClickListener
+import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
@@ -72,12 +73,13 @@ class HomeAdapter(private val listener: OnSubjectClickListener): RecyclerView.Ad
                     listener.deleteFavorite(currentSubject)
                     holder.favButton.text = "Fav"
                 }
+
+            }
+            holder.plusOneButton.setOnClickListener {
+
             }
         }else{
             holder.textView.text = "Pas de sujets dispos"
-        }
-        holder.plusOneButton.setOnClickListener {
-
         }
     }
     fun updateSubjects(newSubjects: List<Subject>) {
