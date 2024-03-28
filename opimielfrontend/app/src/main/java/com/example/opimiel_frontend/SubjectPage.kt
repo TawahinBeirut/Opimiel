@@ -57,7 +57,7 @@ class SubjectPage: AppCompatActivity(),OnMapReadyCallback {
         subjectId= intent.getStringExtra("subjectId").toString();
         authorId= intent.getStringExtra("authorId").toString();
 
-
+        
 
 
         val text :TextView = findViewById(R.id.textViewSubject);
