@@ -22,15 +22,16 @@ class HomeAdapter(private val listener: OnSubjectClickListener): RecyclerView.Ad
 
     class ViewHolder(view: View,viewType: Int) : RecyclerView.ViewHolder(view) {
         lateinit var textView: TextView
-        lateinit var participateButton : Button;
+        lateinit var plusOneButton : Button;
+        lateinit var minusOneButton: Button;
         lateinit var favButton: Button;
 
         init {
             // Define click listener for the ViewHolder's View
             if (viewType == TYPE_ITEM) {
                 textView = view.findViewById(R.id.text_view_item)
-                participateButton = view.findViewById(R.id.button_subject_switch);
-
+                plusOneButton = view.findViewById(R.id.button_subject_plus_one);
+                minusOneButton = view.findViewById(R.id.button_subject_minus_one);
                 favButton = view.findViewById(R.id.button_add_Favorites)
             }
             else{
@@ -59,7 +60,7 @@ class HomeAdapter(private val listener: OnSubjectClickListener): RecyclerView.Ad
             holder.textView.text = currentSubject.name;
             // completer les champs de la view donner
 
-            holder.participateButton.setOnClickListener {
+            holder.itemView.setOnClickListener {
                 listener.onSubjectClick(currentSubject)
             }
             holder.favButton.setOnClickListener {
@@ -74,6 +75,9 @@ class HomeAdapter(private val listener: OnSubjectClickListener): RecyclerView.Ad
             }
         }else{
             holder.textView.text = "Pas de sujets dispos"
+        }
+        holder.plusOneButton.setOnClickListener {
+
         }
     }
     fun updateSubjects(newSubjects: List<Subject>) {

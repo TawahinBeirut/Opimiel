@@ -50,7 +50,7 @@ class SubjectPage: AppCompatActivity(),OnMapReadyCallback {
             kotlin.run {
                 // On recuperera des vrai truc de la liste --> a voir
                 val sydney = location
-
+                // On regle l'icone ( couleur ) en fonction
                 mMap.addMarker(MarkerOptions().position(sydney).title("Marker qui depend de la reponse"))
 
             }

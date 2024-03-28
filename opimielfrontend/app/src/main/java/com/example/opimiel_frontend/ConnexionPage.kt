@@ -13,18 +13,18 @@ class ConnexionPage : AppCompatActivity()  {
     override fun onCreate(savedInstanceState: Bundle?) {
         // Fais la connexion
         super.onCreate(savedInstanceState)
-        setContentView(R.layout.connexion_page);
         buttonLogin = findViewById(R.id.login_button);
+       /* setContentView(R.layout.connexion_page);
         usernameInput = findViewById(R.id.login_username);
-        passwordInput = findViewById(R.id.login_password);
+        passwordInput = findViewById(R.id.login_password);*/
 
-        /*buttonLogin.setOnClickListener{
+        buttonLogin.setOnClickListener{
             var intent: Intent = Intent(this,MainActivity::class.java);
 
             // Vrai Id d'utilisateur
             intent.putExtra("UserId","b898a640-2b5f-4565-b58d-06899d774c66");
             startActivity(intent);
         }
-        */
+
     }
 }

@@ -5,10 +5,14 @@ import OnSubjectClickListener
 import PostFavoriteRequest
 import PostSubjectRequest
 import android.content.Intent
+import android.content.pm.PackageManager
 import android.os.Bundle
 import android.util.Log
+import androidx.activity.result.contract.ActivityResultContracts
 import com.google.android.material.bottomnavigation.BottomNavigationView
 import androidx.appcompat.app.AppCompatActivity
+import androidx.core.app.ActivityCompat
+import androidx.core.content.ContextCompat
 import androidx.navigation.findNavController
 import androidx.navigation.fragment.NavHostFragment
 import androidx.navigation.ui.AppBarConfiguration
@@ -29,7 +33,10 @@ import retrofit2.converter.gson.GsonConverterFactory
 class MainActivity : AppCompatActivity(),OnSubjectClickListener,ChangePageListener {
 
     private lateinit var id:String
-    private lateinit var binding: ActivityMainBinding
+    private lateinit var binding: ActivityMainBinding;
+    private var LatUser: Float = (0).toFloat();
+    private var LongUser : Float = (0).toFloat();
+    private lateinit var fusedLocationProviderClient: F
 
     val logging = HttpLoggingInterceptor().apply { level = HttpLoggingInterceptor.Level.BODY }
     val client = OkHttpClient.Builder()
@@ -50,7 +57,9 @@ class MainActivity : AppCompatActivity(),OnSubjectClickListener,ChangePageListen
         var intent: Intent = intent;
         id= intent.getStringExtra("UserId").toString();
         binding = ActivityMainBinding.inflate(layoutInflater)
-        setContentView(binding.root)
+        setContentView(binding.root);
+
+
 
         val navView: BottomNavigationView = binding.navView
 
