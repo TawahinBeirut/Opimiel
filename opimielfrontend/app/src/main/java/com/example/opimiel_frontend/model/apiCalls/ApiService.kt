@@ -1,4 +1,6 @@
+import android.text.GetChars
 import com.example.opimiel_frontend.model.apiCalls.AddUserResponse
+import com.example.opimiel_frontend.model.apiCalls.GetCountResponse
 import com.example.opimiel_frontend.model.apiCalls.MessageResponse
 import com.example.opimiel_frontend.model.apiCalls.PostAddUserRequest
 import com.example.opimiel_frontend.model.apiCalls.PostGetUser
@@ -48,5 +50,6 @@ interface ApiService{
     @POST("postResponse")
     fun postResponse(@Body requestBody: PostReponseRequest): Call<MessageResponse>
 
-
+    @GET("getCount/{id}")
+    fun getCount(@Path(value="id",encoded = false)id:String): Call<GetCountResponse>
 }
