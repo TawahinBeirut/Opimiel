@@ -188,6 +188,7 @@ class MainActivity : AppCompatActivity(),OnSubjectClickListener,ChangePageListen
         try {
 
             val requestBody = PostFavoriteRequest(id, subject.id)
+            Log.d("CACA",id)
             val call = apiService.addFavorite(requestBody);
 
             call.enqueue(object : Callback<MessageResponse> {

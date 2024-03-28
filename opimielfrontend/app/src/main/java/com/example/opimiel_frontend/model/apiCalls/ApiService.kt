@@ -33,7 +33,7 @@ interface ApiService{
     @GET("getOwnSubjects/{id}")
     fun getOwnSubjects(@Path(value="id",encoded = false) id:String) : Call<SubjectsResponse>
 
-    @GET("getResponses/{id})")
+    @GET("getResponses/{id}")
     fun getResponses(@Path(value="id",encoded = false)id:String) : Call<PostResResponse>
 
     @Headers("Content-Type: application/json")

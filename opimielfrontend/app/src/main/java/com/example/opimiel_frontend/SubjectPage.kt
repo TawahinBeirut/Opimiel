@@ -131,6 +131,6 @@ class SubjectPage: AppCompatActivity(),OnMapReadyCallback {
         val france = LatLng(46.2276, 2.2137)
         // Centrer la carte sur la France
         mMap.moveCamera(CameraUpdateFactory.newLatLngZoom(france, 5.5f))
-    }6
+    }
 
 }

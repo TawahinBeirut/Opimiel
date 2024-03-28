@@ -3,11 +3,13 @@ import { NextRequest,NextResponse } from "next/server";
 
 export async function POST(request:NextRequest) {
     let userId;
-    let subjectId
+    let subjectId;
+
     try {
         const body = await request.json();
         userId = body.userId;
         subjectId = body.subjectId
+        console.error(userId,subjectId)
       } catch (e) {
         return NextResponse.json({ message: "pas Json" }, { status: 403 });
     }
