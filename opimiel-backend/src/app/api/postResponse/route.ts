@@ -4,12 +4,16 @@ import { NextRequest, NextResponse } from "next/server";
 export async function POST(request: NextRequest) {
     let value;
     let authorId;
-    let subjectId
+    let subjectId;
+    let latitude;
+    let longitude;
     try {
         const body = await request.json();
         value = body.value;
         authorId = body.authorId;
-        subjectId = body.subjectId
+        subjectId = body.subjectId;
+        latitude = body.latitude;
+        longitude = body.longitude
       } catch (e) {
         return NextResponse.json({ message: "pas Json" }, { status: 403 });
     }
@@ -25,9 +29,11 @@ export async function POST(request: NextRequest) {
 
     let res2 = await Prisma.response.create({
         data:{
-            value: value,
-            authorId: authorId,
-            subjectId: subjectId
+            value: value as boolean,
+            authorId: authorId as string,
+            subjectId: subjectId as string,
+            latitude: latitude,
+            longitude: longitude
         }
     });
     if (res2) return NextResponse.json({message:"c tout bon"},{status:200})
