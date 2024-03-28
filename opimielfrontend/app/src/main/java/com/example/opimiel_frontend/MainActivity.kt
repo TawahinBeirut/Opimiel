@@ -8,6 +8,7 @@ import android.content.Intent
 import android.content.pm.PackageManager
 import android.os.Bundle
 import android.util.Log
+import android.widget.Toast
 import androidx.activity.result.contract.ActivityResultContracts
 import com.google.android.material.bottomnavigation.BottomNavigationView
 import androidx.appcompat.app.AppCompatActivity
@@ -63,8 +64,9 @@ class MainActivity : AppCompatActivity(),OnSubjectClickListener,ChangePageListen
 
         fusedLocationProviderClient = LocationServices.getFusedLocationProviderClient(this);
 
-        checkLocationPermission()
 
+        fetchLocation()
+        Log.d( "oe",LatUser.toString());
         val navView: BottomNavigationView = binding.navView
 
         val navHostFragment = supportFragmentManager.findFragmentById(R.id.nav_host_fragment_activity_main) as NavHostFragment
@@ -77,6 +79,7 @@ class MainActivity : AppCompatActivity(),OnSubjectClickListener,ChangePageListen
         )
         setupActionBarWithNavController(navController, appBarConfiguration)
         navView.setupWithNavController(navController)
+
     }
     override fun onSubjectClick(subject: Subject) {
         val intent: Intent = Intent(this, SubjectPage::class.java).apply {
@@ -180,9 +183,21 @@ class MainActivity : AppCompatActivity(),OnSubjectClickListener,ChangePageListen
         startActivity(intent);
     }
 
-    override fun checkLocationPermission(){
-        if (ActivityCompat.checkSelfPermission(this,android.Manifest.permission.ACCESS_FINE_LOCATION))
+    private fun fetchLocation(){
+        val task = fusedLocationProviderClient.lastLocation
+
+        if (ActivityCompat.checkSelfPermission(this,android.Manifest.permission.ACCESS_FINE_LOCATION)
             != PackageManager.PERMISSION_GRANTED && ActivityCompat
-                .checkSelfPermission()(this,android.Manifest.permission.ACCESS_COARSE_LOCATION) !=
+                .checkSelfPermission(this,android.Manifest.permission.ACCESS_COARSE_LOCATION) != PackageManager.PERMISSION_GRANTED
+        ){
+            ActivityCompat.requestPermissions(this, arrayOf(android.Manifest.permission.ACCESS_FINE_LOCATION),101)
+            return
+        }
+        task.addOnSuccessListener {
+            if (it != null){
+                LatUser = it.latitude.toFloat();
+                LongUser = it.longitude.toFloat()
+            }
+        }
     }
 }
