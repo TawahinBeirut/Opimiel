@@ -57,7 +57,7 @@ class HomeAdapter(private val listener: OnSubjectClickListener): RecyclerView.Ad
             holder.textView.text = currentSubject.name;
             // completer les champs de la view donner
 
-            holder.itemView.setOnClickListener {
+            holder.participateButton.setOnClickListener {
                 listener.onSubjectClick(currentSubject)
             }
         }else{
