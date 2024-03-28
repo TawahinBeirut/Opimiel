@@ -2,19 +2,22 @@ package com.example.opimiel_frontend
 
 import android.content.Intent
 import android.os.Bundle
+import android.util.Log
 import android.widget.Button
+import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
 import com.google.android.material.textfield.TextInputEditText
 
 class ConnexionPage : AppCompatActivity()  {
     private lateinit var buttonLogin: Button;
+    private lateinit var buttonRegister: Button;
     private lateinit var usernameInput: TextInputEditText;
     private lateinit var passwordInput: TextInputEditText;
     override fun onCreate(savedInstanceState: Bundle?) {
         // Fais la connexion
         super.onCreate(savedInstanceState)
         buttonLogin = findViewById(R.id.login_button);
-       /* setContentView(R.layout.connexion_page);
+        buttonRegister = findViewById(R.id.register_button);
         usernameInput = findViewById(R.id.login_username);
         passwordInput = findViewById(R.id.login_password);*/
 
