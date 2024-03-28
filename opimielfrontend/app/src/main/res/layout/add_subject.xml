@@ -2,7 +2,7 @@
 <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="@android:color/black"
+    android:background="@color/gray"
     android:id="@+id/add_subject">
 
     <EditText
@@ -25,6 +25,7 @@
         android:layout_centerHorizontal="true"
         android:layout_marginTop="16dp"
         android:text="Valider"
+        android:backgroundTint="@color/purple_200"
         android:textColor="@android:color/white" />
 
 </RelativeLayout>

@@ -1,7 +1,7 @@
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
-    android:background="@color/black"
+    android:background="@color/gray"
     android:orientation="vertical"
     android:padding="16dp">
 
@@ -21,30 +21,42 @@
         android:paddingTop="8dp"
         android:layout_marginBottom="10dp">
 
-        <Button
-            android:id="@+id/button_subject_plus_one"
+        <LinearLayout
             android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_weight="1"
-            style="@style/VoteButtonStyle"
-            android:text="Vrai"
-            android:layout_marginEnd="2.5dp" />
-        <Button
-            android:id="@+id/button_subject_minus_one"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_weight="1"
-            style="@style/VoteButtonStyle"
-            android:text="Faux"
-            android:layout_marginEnd="2.5dp" />
+            android:layout_height="wrap_content">
+
+            <Button
+                android:id="@+id/button_subject_plus_one"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                style="@style/VoteButtonStyle"
+                android:text="Vrai"
+                android:backgroundTint="@color/purple_200"
+                android:layout_marginEnd="2.5dp" />
+            <Button
+                android:id="@+id/button_subject_minus_one"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                style="@style/VoteButtonStyle"
+                android:text="Faux"
+                android:backgroundTint="@color/purple_200"
+                android:layout_marginEnd="2.5dp" />
+
+        </LinearLayout>
         <Button
             android:id="@+id/button_add_Favorites"
             android:layout_width="match_parent"
-            android:layout_height="wrap_content"
+            android:layout_height="60dp"
             android:layout_weight="1"
             style="@style/VoteButtonStyle"
-            android:text="Fav"
-            android:layout_marginEnd="2.5dp" />
+            android:text="Ajouter au favoris"
+            android:backgroundTint="@color/purple_200"
+            android:layout_marginEnd="2.5dp"
+            android:drawableLeft="@drawable/star"
+            android:height="20dp"
+            />
 
     </LinearLayout>
 
