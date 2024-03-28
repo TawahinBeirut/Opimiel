@@ -51,6 +51,10 @@ class MainActivity : AppCompatActivity(),OnSubjectClickListener,ChangePageListen
         startActivity(intent)
     }
 
+    override fun getUserId(): String {
+        return id;
+    }
+
 
     override fun changePageToAddSubject() {
         val intent: Intent = Intent(this, AddSubjectPage::class.java).apply {

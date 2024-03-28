@@ -100,4 +100,7 @@ class HomeFragment : Fragment(),OnSubjectClickListener {
         (requireActivity() as? OnSubjectClickListener)?.onSubjectClick(subject)
     }
 
+    override fun getUserId(): String {
+        return (requireActivity() as? OnSubjectClickListener)?.getUserId() ?: String();
+    }
 }

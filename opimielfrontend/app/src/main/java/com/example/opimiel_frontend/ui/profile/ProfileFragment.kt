@@ -1,5 +1,8 @@
 package com.example.opimiel_frontend.ui.profile
 
+import ApiService
+import OnSubjectClickListener
+import SubjectsResponse
 import android.content.Intent
 import android.os.Bundle
 import android.util.Log
@@ -14,15 +17,28 @@ import androidx.lifecycle.ViewModelProvider
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.example.opimiel_frontend.AddSubjectPage
 import com.example.opimiel_frontend.HomeAdapter
+import com.example.opimiel_frontend.Subject
 import com.example.opimiel_frontend.databinding.FragmentProfileBinding
 import com.example.opimiel_frontend.model.listeners.ChangePageListener
 import com.google.android.material.button.MaterialButton
 import com.google.android.material.floatingactionbutton.FloatingActionButton
+import retrofit2.Call
+import retrofit2.Callback
+import retrofit2.Response
+import retrofit2.Retrofit
+import retrofit2.converter.gson.GsonConverterFactory
 
 class ProfileFragment : Fragment() {
 
     private lateinit var addButton: FloatingActionButton;
     private var _binding: FragmentProfileBinding? = null
+    private lateinit var homeAdapter: HomeAdapter;
+
+    val retrofit = Retrofit.Builder()
+        .baseUrl("https://opimiel.vercel.app/api/")
+        .addConverterFactory(GsonConverterFactory.create())
+        .build()
+    val apiService = retrofit.create(ApiService::class.java)
 
     // This property is only valid between onCreateView and
     // onDestroyView.
@@ -38,10 +54,7 @@ class ProfileFragment : Fragment() {
 
         _binding =FragmentProfileBinding.inflate(inflater, container, false)
         val root: View = binding.root
-
         // Configuration du Home Adaptater
-
-
 
         addButton = binding.fab;
 
@@ -58,6 +71,39 @@ class ProfileFragment : Fragment() {
             }
         }
 
+        // Configuration du Home Adaptater
+        with(binding.recyclerViewProfile) {
+            layoutManager = LinearLayoutManager(context)
+            // On met l'api ici
+
+            adapter = HomeAdapter(requireActivity() as OnSubjectClickListener);
+            homeAdapter = adapter as HomeAdapter;
+        }
+        Log.d("oe",(requireActivity() as OnSubjectClickListener).getUserId())
+        // appel api
+        apiService.getOwnSubjects((requireActivity() as OnSubjectClickListener).getUserId()).enqueue(object : Callback<SubjectsResponse> {
+            override fun onResponse(call: Call<SubjectsResponse>, response: Response<SubjectsResponse>) {
+                if (response.isSuccessful) {
+                    val body = response.body();
+                    val subjectList: MutableList<Subject> = mutableListOf();
+                    subjectList.clear();
+                    body?.data?.forEach { subject ->
+                        run {
+                            subjectList.add(subject);
+                        }
+                    }
+                    homeAdapter.updateSubjects(subjectList);
+                    Log.d("retussite api",subjectList.toString())
+                } else {
+                    Log.d("Erreur api","oe")
+                }
+            }
+
+            override fun onFailure(call: Call<SubjectsResponse>, t: Throwable) {
+                // Gérer les erreurs de connexion
+                Log.d("Erreur connexion",t.toString())
+            }
+        })
 
 
         return root
