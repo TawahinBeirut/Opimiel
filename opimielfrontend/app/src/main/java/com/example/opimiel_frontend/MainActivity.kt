@@ -3,6 +3,7 @@ package com.example.opimiel_frontend
 import ApiService
 import OnSubjectClickListener
 import PostFavoriteRequest
+import PostReponseRequest
 import PostSubjectRequest
 import android.content.Intent
 import android.content.pm.PackageManager
@@ -121,6 +122,41 @@ class MainActivity : AppCompatActivity(),OnSubjectClickListener,ChangePageListen
                         startActivity(intent);
                         Log.d("reussite requete",response.toString())
 
+                    }else{
+                        Log.d("erreur requete",response.toString())
+                    }
+                }
+
+                override fun onFailure(call: Call<MessageResponse>, t: Throwable) {
+                    TODO("Not yet implemented")
+                }
+
+            })
+
+
+        }catch (e: Exception) {
+            Log.d("Network exception",e.toString())
+        }
+    }
+
+    override fun postResponse(subject: Subject,value:Boolean) {
+        try {
+
+            val requestBody = PostReponseRequest(id,subject.id,value,this.LatUser,this.LongUser)
+            val call = apiService.postResponse(requestBody);
+
+            call.enqueue(object : Callback<MessageResponse> {
+                override fun onResponse(
+                    call: Call<MessageResponse>,
+                    response: Response<MessageResponse>
+                ) {
+                    if (response.isSuccessful){
+
+                        // faire un toast stp
+                        Snackbar.make(binding.root.rootView, "Requête réussie", Snackbar.LENGTH_LONG).show()
+                        var intent: Intent = Intent(binding.root.context,MainActivity::class.java);
+
+                        Log.d("CACA OUI",response.body().toString())
                     }else{
                         Log.d("erreur requete",response.toString())
                     }

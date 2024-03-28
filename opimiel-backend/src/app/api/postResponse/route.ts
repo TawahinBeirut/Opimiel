@@ -17,15 +17,6 @@ export async function POST(request: NextRequest) {
       } catch (e) {
         return NextResponse.json({ message: "pas Json" }, { status: 403 });
     }
-    let res = await Prisma.response.findUnique({
-        where:{ 
-            authorId_subjectId:{
-                authorId: authorId,
-                subjectId: subjectId
-            }
-        }
-    })
-    if (res) return NextResponse.json({message:"Ce mec a deja repondu "},{status:401})
 
     let res2 = await Prisma.response.create({
         data:{

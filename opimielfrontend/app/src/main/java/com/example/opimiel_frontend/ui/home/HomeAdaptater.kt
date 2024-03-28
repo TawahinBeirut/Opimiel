@@ -76,7 +76,10 @@ class HomeAdapter(private val listener: OnSubjectClickListener): RecyclerView.Ad
 
             }
             holder.plusOneButton.setOnClickListener {
-
+                listener.postResponse(currentSubject,true)
+            }
+            holder.minusOneButton.setOnClickListener {
+                listener.postResponse(currentSubject,false)
             }
         }else{
             holder.textView.text = "Pas de sujets dispos"

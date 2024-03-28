@@ -112,6 +112,10 @@ class FavoritesFragment : Fragment(),OnSubjectClickListener {
         TODO("Not yet implemented")
     }
 
+    override fun postResponse(subject: Subject, value: Boolean) {
+        TODO("Not yet implemented")
+    }
+
     override fun getLatUser(): Float {
         TODO("Not yet implemented")
     }
