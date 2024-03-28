@@ -82,7 +82,6 @@ class ConnexionPage : AppCompatActivity()  {
                                     response: Response<AddUserResponse>
                                 ) {
                                     if (response.isSuccessful){
-                                        Snackbar.make(binding.root.rootView, "Requête réussie", Snackbar.LENGTH_LONG).show()
 
                                         val userid = response.body()?.userid;
                                         Log.d("reussite requete",response.toString())
@@ -133,8 +132,6 @@ class ConnexionPage : AppCompatActivity()  {
                                     response: Response<AddUserResponse>
                                 ) {
                                     if (response.isSuccessful){
-                                        Snackbar.make(binding.root.rootView, "Requête réussie", Snackbar.LENGTH_LONG).show()
-
                                         val userid = response.body()?.userid;
                                         Log.d("reussite requete",response.toString())
                                         var intent: Intent = Intent(binding.root.context,MainActivity::class.java);
