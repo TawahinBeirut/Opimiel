@@ -63,54 +63,54 @@ class ConnexionPage : AppCompatActivity()  {
         passwordInput = findViewById(R.id.login_password);
 
         buttonLogin.setOnClickListener({
-                val email = usernameInput.text.toString();
-                val password = passwordInput.text.toString();
-                if(email.isNotEmpty() && password.isNotEmpty()){
-                    auth.signInWithEmailAndPassword(email, password).addOnCompleteListener({
-                        if(it.isSuccessful){
-                            Toast.makeText(this, "Login in successfully !", Toast.LENGTH_SHORT).show()
+            val email = usernameInput.text.toString();
+            val password = passwordInput.text.toString();
+            if(email.isNotEmpty() && password.isNotEmpty()){
+                auth.signInWithEmailAndPassword(email, password).addOnCompleteListener({
+                    if(it.isSuccessful){
+                        Toast.makeText(this, "Login in successfully !", Toast.LENGTH_SHORT).show()
 
 
-                            try {
+                        try {
 
-                                val requestBody = PostGetUser(email)
-                                val call = apiService.getUser(requestBody);
+                            val requestBody = PostGetUser(email)
+                            val call = apiService.getUser(requestBody);
 
-                                call.enqueue(object : Callback<AddUserResponse> {
-                                    override fun onResponse(
-                                        call: Call<AddUserResponse>,
-                                        response: Response<AddUserResponse>
-                                    ) {
-                                        if (response.isSuccessful){
+                            call.enqueue(object : Callback<AddUserResponse> {
+                                override fun onResponse(
+                                    call: Call<AddUserResponse>,
+                                    response: Response<AddUserResponse>
+                                ) {
+                                    if (response.isSuccessful){
 
-                                            val userid = response.body()?.userid;
-                                            Log.d("reussite requete",response.toString())
-                                            var intent: Intent = Intent(binding.root.context,MainActivity::class.java);
-                                            // Vrai Id d'utilisateur
-                                            intent.putExtra("UserId",userid);
-                                            startActivity(intent);
+                                        val userid = response.body()?.userid;
+                                        Log.d("reussite requete",response.toString())
+                                        var intent: Intent = Intent(binding.root.context,MainActivity::class.java);
+                                        // Vrai Id d'utilisateur
+                                        intent.putExtra("UserId",userid);
+                                        startActivity(intent);
 
-                                        }else{
-                                            Log.d("erreur requete",response.toString())
-                                        }
+                                    }else{
+                                        Log.d("erreur requete",response.toString())
                                     }
+                                }
 
-                                    override fun onFailure(call: Call<AddUserResponse>, t: Throwable) {
-                                        TODO("Not yet implemented")
-                                    }
+                                override fun onFailure(call: Call<AddUserResponse>, t: Throwable) {
+                                    TODO("Not yet implemented")
+                                }
 
-                                })
+                            })
 
 
-                            }catch (e: Exception) {
-                                Log.d("Network exception",e.toString())
-                            }
+                        }catch (e: Exception) {
+                            Log.d("Network exception",e.toString())
                         }
-                    }).addOnFailureListener({
-                        Toast.makeText(this, it.localizedMessage, Toast.LENGTH_LONG).show()
+                    }
+                }).addOnFailureListener({
+                    Toast.makeText(this, it.localizedMessage, Toast.LENGTH_LONG).show()
 
-                    })
-                }
+                })
+            }
         })
 
         buttonRegister.setOnClickListener({

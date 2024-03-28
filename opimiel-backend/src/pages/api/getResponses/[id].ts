@@ -17,7 +17,7 @@ export default async function handler(
       },
     });
     if (!response) {
-      res.status(400).json({ error: "L'id n'existe pas !" });
+      res.status(400).json({ error: `'id n'existe pas ! given ${id}`});
       return;
     }
 

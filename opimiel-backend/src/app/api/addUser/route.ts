@@ -24,7 +24,7 @@ export async function POST(req:NextRequest) {
             password: password
         }
     })
-    return NextResponse.json({oe:"oe",id:res.id},{status: 200})
+    return NextResponse.json({oe:"oe",userid:res.id},{status: 200})
 }
     else return NextResponse.json({oe:"nan"},{status:378})
 }

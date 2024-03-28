@@ -1,7 +1,7 @@
 import Prisma from "@/utils/PrismaClient";
 import { NextRequest,NextResponse } from "next/server";
 
-export async function DELETE(request:NextRequest) {
+export async function POST(request:NextRequest) {
     let userId;
     let subjectId
     try {

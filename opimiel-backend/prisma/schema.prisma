@@ -43,6 +43,7 @@ model Subject {
 }
 
 model Response {
+  id       String     @id @default(uuid())
   value     Boolean
   author    User    @relation(fields: [authorId], references: [id])
   authorId  String
@@ -51,5 +52,4 @@ model Response {
   latitude Float
   longitude Float
 
-  @@id([authorId, subjectId])
 }
