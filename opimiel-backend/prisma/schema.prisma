@@ -48,7 +48,8 @@ model Response {
   authorId  String
   subject   Subject @relation(fields: [subjectId], references: [id])
   subjectId String
+  latitude String
+  longitude Float
 
-  
   @@id([authorId, subjectId])
 }
