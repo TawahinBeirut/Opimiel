@@ -21,6 +21,8 @@ import androidx.navigation.ui.setupWithNavController
 import com.example.opimiel_frontend.databinding.ActivityMainBinding
 import com.example.opimiel_frontend.model.apiCalls.MessageResponse
 import com.example.opimiel_frontend.model.listeners.ChangePageListener
+import com.google.android.gms.location.FusedLocationProviderClient
+import com.google.android.gms.location.LocationServices
 import com.google.android.material.snackbar.Snackbar
 import okhttp3.OkHttpClient
 import okhttp3.logging.HttpLoggingInterceptor
@@ -36,7 +38,7 @@ class MainActivity : AppCompatActivity(),OnSubjectClickListener,ChangePageListen
     private lateinit var binding: ActivityMainBinding;
     private var LatUser: Float = (0).toFloat();
     private var LongUser : Float = (0).toFloat();
-    private lateinit var fusedLocationProviderClient: F
+    private lateinit var fusedLocationProviderClient: FusedLocationProviderClient
 
     val logging = HttpLoggingInterceptor().apply { level = HttpLoggingInterceptor.Level.BODY }
     val client = OkHttpClient.Builder()
@@ -59,7 +61,9 @@ class MainActivity : AppCompatActivity(),OnSubjectClickListener,ChangePageListen
         binding = ActivityMainBinding.inflate(layoutInflater)
         setContentView(binding.root);
 
+        fusedLocationProviderClient = LocationServices.getFusedLocationProviderClient(this);
 
+        checkLocationPermission()
 
         val navView: BottomNavigationView = binding.navView
 
@@ -168,14 +172,17 @@ class MainActivity : AppCompatActivity(),OnSubjectClickListener,ChangePageListen
         }
     }
 
-
-
-
     override fun changePageToAddSubject() {
         val intent: Intent = Intent(this, AddSubjectPage::class.java).apply {
             // Ici on mets toutes les infos importantes
             putExtra("userId", id);
         }
         startActivity(intent);
+    }
+
+    override fun checkLocationPermission(){
+        if (ActivityCompat.checkSelfPermission(this,android.Manifest.permission.ACCESS_FINE_LOCATION))
+            != PackageManager.PERMISSION_GRANTED && ActivityCompat
+                .checkSelfPermission()(this,android.Manifest.permission.ACCESS_COARSE_LOCATION) !=
     }
 }
