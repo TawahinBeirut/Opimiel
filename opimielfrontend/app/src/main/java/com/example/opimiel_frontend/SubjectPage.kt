@@ -76,7 +76,7 @@ class SubjectPage: AppCompatActivity(),OnMapReadyCallback {
                         nbFalse = res.nbFalse
                     }
 
-                    text.text = "nbtrue " + nbTrue + "nbFalse" + nbFalse
+                    text.text = "Oui: " + nbTrue + "Non: " + nbFalse
                 }
                 else Log.d("ERROR",response.toString())
             }

@@ -11,7 +11,8 @@
         android:layout_height="wrap_content"
         android:text="Subject Details"
         android:layout_alignParentTop="true"
-        android:layout_centerHorizontal="true" />
+        android:layout_centerHorizontal="true"
+        android:textSize="20dp"/>
 
     <fragment
         android:id="@+id/map"
