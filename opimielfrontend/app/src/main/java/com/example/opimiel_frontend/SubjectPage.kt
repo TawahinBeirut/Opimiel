@@ -18,6 +18,7 @@ import com.google.android.gms.maps.model.LatLng
 import com.google.android.gms.maps.model.MarkerOptions
 import okhttp3.OkHttpClient
 import okhttp3.logging.HttpLoggingInterceptor
+import org.w3c.dom.Text
 import retrofit2.Call
 import retrofit2.Callback
 import retrofit2.Response
@@ -54,7 +55,9 @@ class SubjectPage: AppCompatActivity(),OnMapReadyCallback {
         setContentView(R.layout.subject_page);
 
 
-        val text :TextView = findViewById(R.id.textViewSubject);
+        val text :TextView = findViewById(R.id.textSubjectName);
+        val nbFalseText:TextView = findViewById(R.id.NbFalse);
+        val nbTrueText: TextView = findViewById(R.id.textNbTrue);
 
         var intent: Intent = intent;
         userId= intent.getStringExtra("userId").toString();
@@ -76,7 +79,9 @@ class SubjectPage: AppCompatActivity(),OnMapReadyCallback {
                         nbFalse = res.nbFalse
                     }
 
-                    text.text = "nbtrue " + nbTrue + "nbFalse" + nbFalse
+                    text.text = "Sujet : " +name;
+                    nbFalseText.text = " Nombre de reponses negatives : " + nbFalse;
+                    nbTrueText.text = "Nombre de reponses positives :" + nbTrue;
                 }
                 else Log.d("ERROR",response.toString())
             }
