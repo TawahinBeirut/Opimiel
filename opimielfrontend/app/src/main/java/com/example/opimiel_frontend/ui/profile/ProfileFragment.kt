@@ -30,7 +30,7 @@ import retrofit2.converter.gson.GsonConverterFactory
 
 class ProfileFragment : Fragment() {
 
-    private lateinit var addButton: FloatingActionButton;
+    private lateinit var addButton: Button;
     private var _binding: FragmentProfileBinding? = null
     private lateinit var homeAdapter: HomeAdapter;
 
@@ -65,10 +65,7 @@ class ProfileFragment : Fragment() {
             val main = requireActivity() as ChangePageListener;
             textView.text = it
 
-            addButton.setOnClickListener{
-                Log.d("#oe","kdk")
-                main.changePageToAddSubject()
-            }
+
         }
 
         // Configuration du Home Adaptater
@@ -78,6 +75,10 @@ class ProfileFragment : Fragment() {
 
             adapter = HomeAdapter(requireActivity() as OnSubjectClickListener);
             homeAdapter = adapter as HomeAdapter;
+            addButton.setOnClickListener{
+                Log.d("#oe","kdk")
+                (context as ChangePageListener).changePageToAddSubject()
+            }
         }
         Log.d("oe",(requireActivity() as OnSubjectClickListener).getUserId())
         // appel api
