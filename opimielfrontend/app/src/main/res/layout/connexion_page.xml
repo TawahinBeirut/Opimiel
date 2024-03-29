@@ -65,6 +65,7 @@
                 android:drawableLeft="@drawable/locker"
                 android:layout_width="match_parent"
                 android:hint="Password"
+                android:inputType="textPassword"
                 android:id="@+id/login_password"
                 android:textColor="@color/white"
                 android:textColorHint="@color/white"
